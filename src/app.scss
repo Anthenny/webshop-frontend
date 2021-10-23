@@ -2,11 +2,15 @@
 
 :root {
   --main-pink: #ffc2d0;
+  --dark-pink: #fdb5c0;
+  --grey: #ececec;
   --light-grey: #e6e6e6;
   --dark-grey: #a2a2a2;
   --dark-pink: #fdb5c0;
   --blue: #5d98ff;
   --poppins: "Poppins", sans-serif;
+  --line: 1px solid var(--color-grey-light-2);
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.2);
 }
 
 // Media queries

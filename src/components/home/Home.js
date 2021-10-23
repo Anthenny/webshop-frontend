@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 import HomeMobiel from "./HomeMobiel";
@@ -19,10 +18,10 @@ const Home = () => {
               account maken en krijg op de 1e bestelling 10% korting
             </p>
             <div className="buttons">
-              <Link to="#" className="btn login">
+              <Link to="/login" className="btn login">
                 Login
               </Link>
-              <Link to="#" className="btn registreren">
+              <Link to="/signup" className="btn registreren">
                 Registreren
               </Link>
             </div>
