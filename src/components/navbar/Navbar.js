@@ -10,11 +10,11 @@ const Navbar = () => {
         <FaBars className="hamburger" />
         <div className="nav__menu-mobiel">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/oorbellen">Oorbellen</NavLink>
-          <NavLink to="/armbanden">Armbanden</NavLink>
-          <NavLink to="/babyaccessoires">Baby accessoires</NavLink>
-          <NavLink to="/tassen">Tassen</NavLink>
-          <NavLink to="/waxmelts">Wax Melts</NavLink>
+          <NavLink to="/producten/:categorie">Oorbellen</NavLink>
+          <NavLink to="/producten/:armbanden">Armbanden</NavLink>
+          <NavLink to="/producten/:babyaccessoires">Baby accessoires</NavLink>
+          <NavLink to="/producten/:tassen">Tassen</NavLink>
+          <NavLink to="/producten/:waxmelts">Wax Melts</NavLink>
           <NavLink to="/profiel">Profiel</NavLink>
         </div>
         <NavLink className="home" to="/">
@@ -25,19 +25,19 @@ const Navbar = () => {
           <div className="dropdown__menu">
             <ul>
               <li>
-                <NavLink to="/oorbellen">Oorbellen</NavLink>
+                <NavLink to="/producten/oorbellen">Oorbellen</NavLink>
               </li>
               <li>
-                <NavLink to="/armbanden">Armbanden</NavLink>
+                <NavLink to="/producten/armbanden">Armbanden</NavLink>
               </li>
               <li>
-                <NavLink to="/babyaccessoires">Baby-accessoires</NavLink>
+                <NavLink to="/producten/babyaccessoires">Baby-accessoires</NavLink>
               </li>
               <li>
-                <NavLink to="/tassen">Tassen</NavLink>
+                <NavLink to="/producten/tassen">Tassen</NavLink>
               </li>
               <li>
-                <NavLink to="/waxmelts">Wax Melts</NavLink>
+                <NavLink to="/producten/waxmelts">Wax Melts</NavLink>
               </li>
             </ul>
           </div>

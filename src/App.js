@@ -10,6 +10,7 @@ import Inspiratie from "./components/footer/inspiratie/Inspiratie";
 import Retourneren from "./components/footer/retourneren/Retourneren";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/signup";
+import Producten from "./components/producten/Producten";
 
 function App() {
   return (
@@ -37,20 +38,8 @@ function App() {
         <Route path="/gebruikers/all" exact>
           <Home />
         </Route>
-        <Route path="/oorbellen" exact>
-          <Home />
-        </Route>
-        <Route path="/armbanden" exact>
-          <Home />
-        </Route>
-        <Route path="/babyaccessoires" exact>
-          <Home />
-        </Route>
-        <Route path="/tassen" exact>
-          <Home />
-        </Route>
-        <Route path="/waxmelts" exact>
-          <Home />
+        <Route path="/producten/:categorie" exact>
+          <Producten />
         </Route>
         <Route path="/producten/nieuw" exact>
           <Home />

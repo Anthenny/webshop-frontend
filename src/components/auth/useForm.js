@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const useForm = (validate) => {
@@ -11,7 +11,46 @@ const useForm = (validate) => {
     bevestigWachtwoord: "",
   });
   const [errors, setErrors] = useState([]);
+  const [formTouched, setFormTouched] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    const signup = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch("http://localhost:8000/gebruikers/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            naam: values.naam,
+            email: values.email,
+            adress: values.adress,
+            plaats: values.plaats,
+            wachtwoord: values.wachtwoord,
+            bevestigWachtwoord: values.bevestigWachtwoord,
+          }),
+        });
+
+        console.log(response);
+        const responseData = await response.json();
+        console.log(responseData);
+        if (!response.ok) throw new Error(responseData.message);
+
+        setIsLoading(false);
+        history.push("/login");
+      } catch (err) {
+        console.log(err);
+        setErrors((error) => [...error, err.message]);
+        setIsLoading(false);
+      }
+    };
+    if (errors.length === 0 && formTouched) {
+      signup();
+    }
+  }, [errors, formTouched]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,19 +64,11 @@ const useForm = (validate) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    setFormTouched(true);
     setErrors(validate(values));
-
-    finalSubmit();
   };
 
-  const finalSubmit = () => {
-    console.log(errors);
-    if (errors.length === 0) {
-      history.push("/login");
-    }
-  };
-
-  return { handleChange, values, handleSubmit, errors };
+  return { handleChange, values, handleSubmit, errors, formTouched, isLoading };
 };
 
 export default useForm;

@@ -1,9 +1,43 @@
-import React from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import "./login.scss";
+import LoadingSpinner from "../shared/LoadingSpinner";
 
 const Login = () => {
+  const emailInputRef = useRef(" ");
+  const wachtwoordInputRef = useRef();
+  const [error, setError] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const submitLoginHandler = async (e) => {
+    e.preventDefault();
+    const enteredEmail = emailInputRef.current.value;
+    const enteredWachtwoord = wachtwoordInputRef.current.value;
+
+    try {
+      const response = await fetch("http://localhost:8000/gebruikers/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: enteredEmail,
+          wachtwoord: enteredWachtwoord,
+        }),
+      });
+      console.log(response);
+      const responseData = await response.json();
+      console.log(responseData);
+      if (!response.ok) throw new Error(responseData.message);
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="login" id="login">
       <div className="container">
@@ -14,13 +48,21 @@ const Login = () => {
               <h1>Welkom terug !</h1>
               <p>Log in om door te gaan</p>
             </div>
-            <form action="#" className="form">
-              <span className="ErroMessage">Error message</span>
+            {isLoading && <LoadingSpinner asOverlay />}
+            <form action="#" className="form" onSubmit={submitLoginHandler}>
+              {error && <span className="ErroMessage">{error}</span>}
               <div className="box">
                 <label htmlFor="email">
                   <i className="fas fa-envelope"></i>
                 </label>
-                <input type="text" id="email" name="email" placeholder="Vul uw email in" />
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  placeholder="Vul uw email in"
+                  value={emailInputRef.value}
+                  ref={emailInputRef}
+                />
               </div>
               <div className="box">
                 <label htmlFor="wachtwoord">
@@ -31,6 +73,7 @@ const Login = () => {
                   id="wachtwoord"
                   name="wachtwoord"
                   placeholder="Vul uw wachtwoord in"
+                  ref={wachtwoordInputRef}
                 />
               </div>
               <p className="wachtwoordVergeten"> Wachtwoord vergeten ?</p>

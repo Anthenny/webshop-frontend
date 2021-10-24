@@ -3,9 +3,10 @@ import useForm from "./useForm";
 import validate from "./validateInfo";
 
 import "./signup.scss";
+import LoadingSpinner from "../shared/LoadingSpinner";
 
 const Signup = () => {
-  const { handleChange, values, handleSubmit, errors } = useForm(validate);
+  const { handleChange, values, handleSubmit, errors, formTouched, isLoading } = useForm(validate);
 
   return (
     <div className="login" id="login">
@@ -17,8 +18,9 @@ const Signup = () => {
               <h1>Welkom!</h1>
               <p>Registreer om door te gaan</p>
             </div>
+            {isLoading && <LoadingSpinner asOverlay />}
             <form action="#" className="form" onSubmit={handleSubmit}>
-              {errors && <span className="ErroMessage">{errors[0]}</span>}
+              {errors && formTouched && <span className="ErroMessage">{errors[0]}</span>}
               <div className="box">
                 <label htmlFor="naam">
                   <i className="fas fa-signature"></i>
