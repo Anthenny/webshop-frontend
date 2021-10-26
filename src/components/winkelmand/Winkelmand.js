@@ -30,7 +30,7 @@ const WinkelMand = () => {
         <div className="afreken_box">
           <div className="totaal">
             <h1>Totaal</h1>
-            <p>$ {cartTotalAmount} </p>
+            <p>$ {cartTotalAmount.toFixed(2)} </p>
           </div>
           <div className="btn_afrekenen">
             <button>Reken af</button>

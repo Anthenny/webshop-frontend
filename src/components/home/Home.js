@@ -38,27 +38,27 @@ const Home = () => {
             <div className="item">
               <h5>Oorbellen</h5>
               <img src="./img/home/oorbel.png" alt="Foto van oorbellen" />
-              <Link to="#">Shop nu</Link>
+              <Link to="/producten/oorbellen">Shop nu</Link>
             </div>
             <div className="item">
               <h5>Armbanden</h5>
               <img src="./img/home/armband.png" alt="Foto van armbanden" />
-              <Link to="#">Shop nu</Link>
+              <Link to="/producten/armbanden">Shop nu</Link>
             </div>
             <div className="item baby">
               <h5>Baby Accessoires</h5>
               <img src="./img/home/leeuw.png" alt="Foto van baby Accessoires" />
-              <Link to="#">Shop nu</Link>
+              <Link to="/producten/babyaccessoires">Shop nu</Link>
             </div>
             <div className="item tassen">
               <h5>Tassen</h5>
               <img src="./img/home/tas.png" alt="Foto van tassen" />
-              <Link to="#">Shop nu</Link>
+              <Link to="/producten/tassen">Shop nu</Link>
             </div>
             <div className="item waxmelts">
               <h5>Wax melts</h5>
               <img src="./img/home/wax.png" alt="Foto van wax melts" />
-              <Link to="#">Shop nu</Link>
+              <Link to="/producten/waxmelts">Shop nu</Link>
             </div>
           </div>
         </div>

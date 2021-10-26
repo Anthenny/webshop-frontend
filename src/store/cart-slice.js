@@ -6,12 +6,15 @@ const cartSlice = createSlice({
     items: [],
     totalQuantity: 0,
     totalAmount: 0,
+    // Fix totale amount zodat het automatisch brekent wordt
   },
   reducers: {
     addItemToCart(state, action) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id); // Check of je een match hebt
       state.totalQuantity++;
+      state.totalAmount += newItem.prijs;
+      state.totalAmount.toFixed(2);
       // Update later, voeg meer gegevens toe van het product wat belangrijk is om te weten bij de bestelling
       if (!existingItem) {
         state.items.push({
@@ -31,6 +34,8 @@ const cartSlice = createSlice({
       const id = action.payload;
       const existingItem = state.items.find((item) => id === item.id);
       state.totalQuantity--;
+      state.totalAmount -= existingItem.prijs;
+      state.totalAmount.toFixed(2);
       if (existingItem.quantity === 1) {
         state.items = state.items.filter((item) => item.id !== id); // loop over de array en return elk item dat niet matched met het gegeven id.
       } else {

@@ -34,9 +34,18 @@ const Login = () => {
         }),
       });
       const responseData = await response.json();
-      console.log(responseData);
       if (!response.ok) throw new Error(responseData.message);
-      dispatch(authActions.login());
+      dispatch(
+        authActions.login({
+          gebruikerId: responseData.gebruiker._id,
+          token: responseData.token,
+        })
+      );
+      localStorage.setItem(
+        "gebruikerInfo",
+        JSON.stringify({ gebruikerId: responseData.gebruiker._id, token: responseData.token })
+      );
+
       history.push("/");
       setIsLoading(false);
     } catch (err) {

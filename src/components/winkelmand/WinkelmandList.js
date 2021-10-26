@@ -39,7 +39,7 @@ const WinkelmandList = (props) => {
         <button onClick={removeItemHandler}>-</button>
       </div>
       <div className="btn_verwijderen">
-        <button>
+        <button onClick={removeItemHandler}>
           <i class="fas fa-trash"></i>
         </button>
       </div>

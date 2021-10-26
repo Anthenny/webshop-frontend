@@ -24,7 +24,7 @@ const ProductList = (props) => {
         </div>
         <div className="btn">
           <button onClick={addToCartHandler}>
-            <i class="fas fa-shopping-cart"></i>
+            <i className="fas fa-shopping-cart"></i>
           </button>
         </div>
       </div>
