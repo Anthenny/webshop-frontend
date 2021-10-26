@@ -13,13 +13,9 @@
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.2);
 }
 
-// Media queries
-
-// 0-600px telefoon
-// 600-900px tablet
-// 900 - 1200px tablet groot
-// 1200-1800 laptop
-// 1800+ desktop
+#root {
+  background-color: #fdfdfd;
+}
 
 html {
   font-size: 62.5%;

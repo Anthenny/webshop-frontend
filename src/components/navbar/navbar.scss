@@ -125,6 +125,25 @@ header {
         font-size: 4rem;
       }
     }
+
+    a {
+      position: relative;
+      color: white;
+
+      .item_nummer {
+        height: 2.2rem;
+        width: 2.2rem;
+        position: absolute;
+        border-radius: 50%;
+        background-color: #5d98ff;
+        font-size: 1.5rem;
+        top: -0.8rem;
+        right: -1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 
   @media (max-width: 1700px) {

@@ -1,14 +1,20 @@
+// react imports
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 
-import "./login.scss";
+// eigen files
+import { authActions } from "../../store/auth-slice";
 import LoadingSpinner from "../shared/LoadingSpinner";
+import "./login.scss";
 
 const Login = () => {
   const emailInputRef = useRef(" ");
   const wachtwoordInputRef = useRef();
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const submitLoginHandler = async (e) => {
     e.preventDefault();
@@ -16,6 +22,7 @@ const Login = () => {
     const enteredWachtwoord = wachtwoordInputRef.current.value;
 
     try {
+      setIsLoading(true);
       const response = await fetch("http://localhost:8000/gebruikers/login", {
         method: "POST",
         headers: {
@@ -26,10 +33,11 @@ const Login = () => {
           wachtwoord: enteredWachtwoord,
         }),
       });
-      console.log(response);
       const responseData = await response.json();
       console.log(responseData);
       if (!response.ok) throw new Error(responseData.message);
+      dispatch(authActions.login());
+      history.push("/");
       setIsLoading(false);
     } catch (err) {
       console.log(err);

@@ -1,9 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 
+import { useSelector } from "react-redux";
 import "./navbar.scss";
 
 const Navbar = () => {
+  const cartQuantity = useSelector((state) => state.cart.totalQuantity);
+
   return (
     <header>
       <nav className="navbar__laptop">
@@ -51,6 +54,7 @@ const Navbar = () => {
 
         <NavLink to="/winkelmand">
           <i className="fas fa-shopping-cart"></i>
+          <p className="item_nummer">{cartQuantity}</p>
         </NavLink>
       </div>
     </header>

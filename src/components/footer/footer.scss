@@ -1,8 +1,11 @@
+#root {
+  min-height: 100vh;
+}
 footer {
   color: white;
   background-color: var(--main-pink);
   height: 6vh;
-  position: relative;
+  position: sticky;
   bottom: 0;
   width: 100%;
   display: flex;
