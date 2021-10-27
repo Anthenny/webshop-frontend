@@ -13,12 +13,13 @@ import Login from "./components/auth/Login";
 import Signup from "./components/auth/signup";
 import Producten from "./components/producten/Producten";
 import Winkelmand from "./components/winkelmand/Winkelmand";
+import Bevestig from "./components/betalen/Bevestig";
 
 import { authActions } from "./store/auth-slice";
-
 import "./app.scss";
 import LoadingSpinner from "./components/shared/LoadingSpinner";
 import { cartActions } from "./store/cart-slice";
+import Succes from "./components/betalen/Succes";
 
 let isInitial = true;
 
@@ -65,7 +66,6 @@ function App() {
       storedData.items.forEach((item) => {
         // check wat item.quantity is en op basis daarvan voor je x aantal x de dispatch uit
         const quantity = item.quantity;
-        console.log(quantity);
 
         dispatch(
           cartActions.addItemToCart({
@@ -119,6 +119,12 @@ function App() {
             </Route>
             <Route path="/product/:productId" exact>
               <Home />
+            </Route>
+            <Route path="/winkelmand/bevestigen" exact>
+              <Bevestig />
+            </Route>
+            <Route path="/succes" exact>
+              <Succes />
             </Route>
             <Route path="/winkelmand" exact>
               <Winkelmand />

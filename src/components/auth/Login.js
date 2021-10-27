@@ -33,21 +33,34 @@ const Login = () => {
           wachtwoord: enteredWachtwoord,
         }),
       });
+
       const responseData = await response.json();
       if (!response.ok) throw new Error(responseData.message);
       dispatch(
         authActions.login({
           gebruikerId: responseData.gebruiker._id,
+          gebruikerNaam: responseData.gebruiker.naam,
+          gebruikerEmail: responseData.gebruiker.email,
+          gebruikerAdress: responseData.gebruiker.adress,
+          gebruikerPlaats: responseData.gebruiker.plaats,
           token: responseData.token,
         })
       );
+
       localStorage.setItem(
         "gebruikerInfo",
-        JSON.stringify({ gebruikerId: responseData.gebruiker._id, token: responseData.token })
+        JSON.stringify({
+          gebruikerId: responseData.gebruiker._id,
+          gebruikerNaam: responseData.gebruiker.naam,
+          gebruikerEmail: responseData.gebruiker.email,
+          gebruikerAdress: responseData.gebruiker.adress,
+          gebruikerPlaats: responseData.gebruiker.plaats,
+          token: responseData.token,
+        })
       );
 
-      history.push("/");
       setIsLoading(false);
+      history.push("/");
     } catch (err) {
       console.log(err);
       setError(err.message);
