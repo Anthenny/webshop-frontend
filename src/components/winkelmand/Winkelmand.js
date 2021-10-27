@@ -1,3 +1,4 @@
+// react imports
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -7,6 +8,7 @@ import WinkelmandList from "./WinkelmandList";
 import LoadingSpinner from "../shared/LoadingSpinner";
 import "./winkelmand.scss";
 
+// Component die de winkelmand laat zien. Vanaf hier posten we het winkelmandje in de backend(Is eigenlijk niet nodig)
 const WinkelMand = () => {
   const cart = useSelector((state) => state.cart);
   const cartTotalAmount = useSelector((state) => state.cart.totalAmount);
@@ -49,7 +51,6 @@ const WinkelMand = () => {
       <div className="winkelmand_box">
         {isLoading && <LoadingSpinner asOverlay />}
         <ul>
-          {/* Check of er producten zijn anders geen producten in uw winkelmand */}
           {cart.items.map((item) => (
             <WinkelmandList
               key={item.id}

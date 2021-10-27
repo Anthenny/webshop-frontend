@@ -1,9 +1,15 @@
+// react imports
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
+// eigen files
 import HomeMobiel from "./HomeMobiel";
 import "./home.scss";
 
+// Component voor home. Home checkt alleen of de gebruiker is ingelogd, als de gebruiker niet is ingelogd laten we de login en registreer knop zien.
 const Home = () => {
+  const gebruikerIsLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   return (
     <>
       <HomeMobiel />
@@ -17,14 +23,16 @@ const Home = () => {
               Op deze site wil ik graag nieuwe handgemaakte producten met jullie delen Je kan een
               account maken en krijg op de 1e bestelling 10% korting
             </p>
-            <div className="buttons">
-              <Link to="/login" className="btn login">
-                Login
-              </Link>
-              <Link to="/signup" className="btn registreren">
-                Registreren
-              </Link>
-            </div>
+            {!gebruikerIsLoggedIn && (
+              <div className="buttons">
+                <Link to="/login" className="btn login">
+                  Login
+                </Link>
+                <Link to="/signup" className="btn registreren">
+                  Registreren
+                </Link>
+              </div>
+            )}
           </div>
           <div className="right">
             <img src="./img/home/sieraden.png" alt="Foto van sieraden" />

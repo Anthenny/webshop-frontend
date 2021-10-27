@@ -1,11 +1,15 @@
+// react imports
+
 import { Link } from "react-router-dom";
 import useForm from "./useForm";
-import validate from "./validateInfo";
 
+// eigen files
 import "./signup.scss";
 import LoadingSpinner from "../shared/LoadingSpinner";
+import validate from "./validateInfo";
 
 const Signup = () => {
+  // Maak variabelen zodat je ze gemakkelijk kan gebruiken in jsx
   const { handleChange, values, handleSubmit, errors, formTouched, isLoading } = useForm(validate);
 
   return (

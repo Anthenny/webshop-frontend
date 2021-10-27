@@ -1,7 +1,10 @@
+// react imports
 import { Link } from "react-router-dom";
 
+// eigen files
 import "./footer.scss";
 
+// Domme component die simpelweg de contact pagina laat zien
 const Footer = () => {
   return (
     <footer>

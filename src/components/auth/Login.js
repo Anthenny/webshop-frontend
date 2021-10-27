@@ -16,6 +16,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  // Functie de wordt getriggered als een gebruiker wilt inloggen. We sturen een post req en checken dit in de backend, als er een error is vangen we deze op in responseData.message
   const submitLoginHandler = async (e) => {
     e.preventDefault();
     const enteredEmail = emailInputRef.current.value;
@@ -35,7 +36,11 @@ const Login = () => {
       });
 
       const responseData = await response.json();
+
+      // guardClause
       if (!response.ok) throw new Error(responseData.message);
+
+      // Voer de login functie uit en sla deze op in de redux state
       dispatch(
         authActions.login({
           gebruikerId: responseData.gebruiker._id,
@@ -47,6 +52,7 @@ const Login = () => {
         })
       );
 
+      // Sla de gebruiker op in localStorage
       localStorage.setItem(
         "gebruikerInfo",
         JSON.stringify({

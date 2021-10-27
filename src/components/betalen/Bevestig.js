@@ -1,10 +1,13 @@
+// react imports
 import { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { cartActions } from "../../store/cart-slice";
 
+// eigen files
 import LoadingSpinner from "../shared/LoadingSpinner";
 
+// Component waarin we de gebruiker een kans geven om zijn/haar gegevens te bewerken. Als de gebruiker al is ingelogd pakken we deze gegevens van de state en vullen we deze in
 const Bevestig = () => {
   const gebruiker = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);

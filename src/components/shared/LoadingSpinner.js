@@ -1,10 +1,13 @@
-import React from 'react';
+// react imports
+import React from "react";
 
-import './LoadingSpinner.css';
+// eigen files
+import "./LoadingSpinner.css";
 
-const LoadingSpinner = props => {
+// Component die loadingSpinner laat zien
+const LoadingSpinner = (props) => {
   return (
-    <div className={`${props.asOverlay && 'loading-spinner__overlay'}`}>
+    <div className={`${props.asOverlay && "loading-spinner__overlay"}`}>
       <div className="lds-dual-ring"></div>
     </div>
   );

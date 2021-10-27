@@ -1,6 +1,10 @@
+// react imports
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
+// Functie dat userInput pakt en de errors in een array stopt die we 1 voor  1 laten zien als er een error is.
+
+// formTouched zorgt ervoor dat je niet gelijk een formulier kan submitten als je op de pagina komt
 const useForm = (validate) => {
   const [values, setValues] = useState({
     naam: " ",

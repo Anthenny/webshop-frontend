@@ -1,7 +1,9 @@
+// react imports
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+// eigen files
 import CategorieOpties from "./CategorieOpties";
 import LoadingSpinner from "../shared/LoadingSpinner";
 import ProductList from "./ProductList";
@@ -15,6 +17,7 @@ const Producten = () => {
   const [foundProducts, setFoundProducts] = useState();
   const gebruiker = useSelector((state) => state.auth);
 
+  // useEffect die de producten uit de database haalt. We gebruiken req.param om te filteren in de backend. (param oorbellen = producten/oorbellen laat alleen oorbellen zien)
   useEffect(() => {
     const sendRequest = async () => {
       setIsLoading(true);
@@ -38,6 +41,7 @@ const Producten = () => {
     sendRequest();
   }, [categorie]);
 
+  // Check of er produten zijn om weer te geven.
   const checkProducts = () => {
     if (foundProducts === 0) {
       return (
@@ -54,29 +58,6 @@ const Producten = () => {
                 key={product._id}
                 id={product._id}
                 image={product.image}
-                // naam={product.naam}
-                prijs={product.prijs}
-              />
-            ))}
-          </ul>
-        </div>
-      );
-    }
-  };
-
-  const checkError = () => {
-    if (error) {
-      return <h1>{error}</h1>;
-    } else {
-      return (
-        <div className="producten">
-          <ul>
-            {loadedProducts.map((product) => (
-              <ProductList
-                key={product._id}
-                id={product._id}
-                image={product.image}
-                // naam={product.naam}
                 prijs={product.prijs}
               />
             ))}
@@ -89,11 +70,11 @@ const Producten = () => {
   return (
     <div className="categorieen" id="categorieen">
       <div className="categorieen__box">
-        {/* {isLoading && (
+        {isLoading && (
           <div className="center">
             <LoadingSpinner />
           </div>
-        )} */}
+        )}
 
         <div className="categorieen__box--text">
           <h1>Oorbellen</h1>
@@ -102,6 +83,7 @@ const Producten = () => {
         </div>
         <CategorieOpties />
       </div>
+
       {error && <h1>{error}</h1>}
       {!isLoading && loadedProducts && (
         <div className="producten__box">

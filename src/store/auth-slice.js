@@ -16,5 +16,8 @@ const authSlice = createSlice({
   },
 });
 
+// Export alleen de functies
 export const authActions = authSlice.actions;
+
+// Export de gehele cart
 export default authSlice;

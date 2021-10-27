@@ -1,5 +1,4 @@
-import React from "react";
-
+// Domme component die simpelweg de opties laat zien
 const CategorieOpties = () => {
   return (
     <div className="categorieen__box--opties">

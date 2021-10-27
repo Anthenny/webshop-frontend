@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { cartActions } from "../../store/cart-slice";
 
+// Component die toestaat dat je items toevoegd en verwijderd als je op - en + klikt
 const WinkelmandList = (props) => {
   const dispatch = useDispatch();
 

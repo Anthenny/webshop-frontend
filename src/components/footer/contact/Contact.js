@@ -1,5 +1,7 @@
+// eigen files
 import "./contact.scss";
 
+// Domme component die simpelweg de contact pagina laat zien(werkt momenteel nog niet)
 const Contact = () => {
   return (
     <div className="contact__container">

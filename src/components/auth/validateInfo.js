@@ -1,3 +1,5 @@
+// Functie die een error array heeft die we vullen met eventuele errors.
+
 export default function validateInfo(values) {
   let errors = [];
 

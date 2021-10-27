@@ -6,7 +6,6 @@ const cartSlice = createSlice({
     items: [],
     totalQuantity: 0,
     totalAmount: 0,
-    // Fix totale amount zodat het automatisch brekent wordt
   },
   reducers: {
     addItemToCart(state, action) {
@@ -15,7 +14,6 @@ const cartSlice = createSlice({
       state.totalQuantity++;
       state.totalAmount += newItem.prijs;
       state.totalAmount.toFixed(2);
-      // Update later, voeg meer gegevens toe van het product wat belangrijk is om te weten bij de bestelling
       if (!existingItem) {
         state.items.push({
           id: newItem.id,
@@ -51,6 +49,8 @@ const cartSlice = createSlice({
   },
 });
 
+// Export alleen de functies
 export const cartActions = cartSlice.actions;
 
+// Export de gehele cart
 export default cartSlice;

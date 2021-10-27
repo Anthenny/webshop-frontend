@@ -1,6 +1,10 @@
+// react imports
 import { useDispatch } from "react-redux";
 
+// eigen files
 import { cartActions } from "../../store/cart-slice";
+
+//  Component die de winkelmand update
 const ProductList = (props) => {
   const dispatch = useDispatch();
 

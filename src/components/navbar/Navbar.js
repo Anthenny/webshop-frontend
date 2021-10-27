@@ -1,9 +1,12 @@
+// react imports
 import { NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
-
 import { useSelector } from "react-redux";
+
+// eigen files
 import "./navbar.scss";
 
+// Component voor de navbar, deze checkt hoeveel producten er in het winkelmandje zitten.
 const Navbar = () => {
   const cartQuantity = useSelector((state) => state.cart.totalQuantity);
 

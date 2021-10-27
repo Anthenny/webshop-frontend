@@ -1,7 +1,7 @@
-import React from "react";
-
+// eigen files
 import "./inspiratie.scss";
 
+// Domme component die simpelweg de contact pagina laat zien
 const Inspiratie = () => {
   return (
     <div className="inspiratie__container">
