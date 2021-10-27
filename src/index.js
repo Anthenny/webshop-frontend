@@ -1,8 +1,10 @@
-import React from "react";
+// react imports
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import store from "./store/index";
 import { BrowserRouter } from "react-router-dom";
+
+// Eigen files
+import store from "./store/index";
 import App from "./App";
 
 // store zorgt ervoor dat heel de app toegang heeft tot specifieke delen waar ze zichzelf op "subscriben"

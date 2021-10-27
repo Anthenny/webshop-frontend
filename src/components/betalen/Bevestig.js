@@ -6,6 +6,7 @@ import { cartActions } from "../../store/cart-slice";
 
 // eigen files
 import LoadingSpinner from "../shared/LoadingSpinner";
+import "./bevestig.scss";
 
 // Component waarin we de gebruiker een kans geven om zijn/haar gegevens te bewerken. Als de gebruiker al is ingelogd pakken we deze gegevens van de state en vullen we deze in
 const Bevestig = () => {
@@ -15,7 +16,6 @@ const Bevestig = () => {
   const emailInputRef = useRef();
   const adressInputRef = useRef();
   const plaatsInputRef = useRef();
-  const totalAmountInputRef = useRef();
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -31,7 +31,6 @@ const Bevestig = () => {
     const enteredEmail = emailInputRef.current.value;
     const enteredAdress = adressInputRef.current.value;
     const enteredPlaats = plaatsInputRef.current.value;
-    const enteredTotalAmount = totalAmountInputRef.current.value;
 
     try {
       setIsLoading(true);
@@ -46,7 +45,7 @@ const Bevestig = () => {
           adress: enteredAdress,
           plaats: enteredPlaats,
           cart,
-          totalAmount: enteredTotalAmount,
+          totalAmount: cart.totalAmount,
         }),
       });
 
@@ -69,24 +68,70 @@ const Bevestig = () => {
     return isLoading ? (
       <LoadingSpinner asOverlay />
     ) : (
-      <>
-        <h1>Beste,</h1>
-        <p>
-          Omdat wij een klein bedrijf zijn vragen we u om het totale bedrag over te maken naar:
-          REKENINGNUMMER. Bevestig uw gegevens en wij versturen het product zodra wij de betaling
-          binnen hebben.
-        </p>
+      <div className="bevestig__container">
+        <h1 className="kop">
+          <span>B</span>evestigen
+        </h1>
+        <div className="bevestig__header">
+          <h1>Beste,</h1>
+          <p>
+            Omdat wij een klein bedrijf zijn vragen we u om het totale bedrag over te maken naar:
+            REKENINGNUMMER.
+            <br /> Bevestig uw gegevens en wij versturen het product zodra wij de betaling binnen
+            hebben. <br />
+            Heeft u vragen? Aarzel niet en email naar: EMAIL
+          </p>
+        </div>
 
-        <p>Heeft u vragen? Aarzel niet en email naar: EMAIL</p>
         <form>
-          <input type="text" ref={naamInputRef} value={gebruiker.gebruikerInfo.gebruikerNaam} />
-          <input type="email" ref={emailInputRef} value={gebruiker.gebruikerInfo.gebruikerEmail} />
-          <input type="text" ref={adressInputRef} value={gebruiker.gebruikerInfo.gebruikerAdress} />
-          <input type="text" ref={plaatsInputRef} value={gebruiker.gebruikerInfo.gebruikerPlaats} />
-          <input type="text" ref={totalAmountInputRef} value={cart.totalAmount} />
-          <button onClick={bevestigGegevensHandler}>bevestig gegevens</button>
+          <div className="item">
+            <label htmlFor="naam">Naam:</label>
+            <input
+              id="naam"
+              type="text"
+              ref={naamInputRef}
+              placeholder="Vul uw naam in"
+              value={gebruiker.gebruikerInfo.gebruikerNaam}
+            />
+          </div>
+          <div className="item">
+            <label htmlFor="email">Email:</label>
+            <input
+              id="email"
+              type="text"
+              ref={emailInputRef}
+              placeholder="Vul uw email in"
+              value={gebruiker.gebruikerInfo.gebruikerEmail}
+            />
+          </div>
+          <div className="item">
+            <label htmlFor="adress">Adress:</label>
+            <input
+              id="adress"
+              type="text"
+              ref={adressInputRef}
+              placeholder="Vul uw adress in"
+              value={gebruiker.gebruikerInfo.gebruikerAdress}
+            />
+          </div>
+          <div className="item">
+            <label htmlFor="plaats">Plaats:</label>
+            <input
+              id="plaats"
+              type="text"
+              ref={plaatsInputRef}
+              placeholder="Vul uw plaats in"
+              value={gebruiker.gebruikerInfo.gebruikerPlaats}
+            />
+          </div>
+
+          <div className="item">
+            <label>Amount:</label>
+            <p className="totalAmount">{cart.totalAmount}</p>
+          </div>
+          <button onClick={bevestigGegevensHandler}>Bevestig gegevens</button>
         </form>
-      </>
+      </div>
     );
   };
 
@@ -94,24 +139,40 @@ const Bevestig = () => {
     return isLoading ? (
       <LoadingSpinner asOverlay />
     ) : (
-      <>
-        <h1>Beste,</h1>
-        <p>
-          Omdat wij een klein bedrijf zijn vragen we u om het totale bedrag over te maken naar:
-          REKENINGNUMMER. Bevestig uw gegevens en wij versturen het product zodra wij de betaling
-          binnen hebben.
-        </p>
+      <div className="bevestig__container">
+        <div className="bevestig__header">
+          <h1>Beste,</h1>
+          <p>
+            Omdat wij een klein bedrijf zijn vragen we u om het totale bedrag over te maken naar:
+            REKENINGNUMMER. Bevestig uw gegevens en wij versturen het product zodra wij de betaling
+            binnen hebben.
+          </p>
+          <p>Heeft u vragen? Aarzel niet en email naar: EMAIL</p>
+        </div>
 
-        <p>Heeft u vragen? Aarzel niet en email naar: EMAIL</p>
         <form>
-          <input type="text" ref={naamInputRef} placeholder="vul uw naam in" />
-          <input type="text" ref={emailInputRef} placeholder="vul uw email in" />
-          <input type="text" ref={adressInputRef} placeholder="vul uw adress in" />
-          <input type="text" ref={plaatsInputRef} placeholder="vul uw plaats in" />
-          <input type="text" ref={totalAmountInputRef} value={cart.totalAmount} />
-          <button onClick={bevestigGegevensHandler}> bevestig gegevens</button>
+          <div className="item">
+            <label htmlFor="naam">Naam:</label>
+            <input id="naam" type="text" ref={naamInputRef} placeholder="Vul uw naam in" />
+          </div>
+          <div className="item">
+            <label htmlFor="email">Email:</label>
+            <input id="email" type="text" ref={emailInputRef} placeholder="Vul uw email in" />
+          </div>
+          <div className="item">
+            <label htmlFor="adress">Adress:</label>
+            <input id="adress" type="text" ref={adressInputRef} placeholder="Vul uw adress in" />
+          </div>
+          <div className="item">
+            <label htmlFor="plaats">Plaats:</label>
+            <input id="plaats" type="text" ref={plaatsInputRef} placeholder="Vul uw plaats in" />
+          </div>
+
+          <p className="totalAmount">{cart.totalAmount}</p>
+
+          <button onClick={bevestigGegevensHandler}>Bevestig gegevens</button>
         </form>
-      </>
+      </div>
     );
   };
 
